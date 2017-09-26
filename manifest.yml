@@ -1,0 +1,9 @@
+applications:
+- memory: 512M
+  instances: 1
+  buildpack: java_buildpack_offline
+  stack: cflinuxfs2
+  timeout: 360
+
+services:
+- postgreSQL

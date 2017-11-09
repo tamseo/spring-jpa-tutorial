@@ -14,4 +14,4 @@ run:
   args: ["-f", "demo-app-source-code/pom.xml", "package", "sonar:sonar"]
 
 params:
-MAVEN_BASEDIR: demo-app-source-code
+  MAVEN_BASEDIR: demo-app-source-code

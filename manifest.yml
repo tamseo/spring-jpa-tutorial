@@ -5,6 +5,7 @@ applications:
   buildpack: java_buildpack_offline
   stack: cflinuxfs2
   timeout: 360
+  path: target/springJPA-postgreSQL-0.0.1-SNAPSHOT.jar
 
 services:
 - post

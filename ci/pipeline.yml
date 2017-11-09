@@ -1,0 +1,40 @@
+---
+resources:
+- name: demo-app-source-code
+  type: git
+  source:
+    uri: https://github.com/tamseo/spring-jpa-tutorial
+    branch: master
+
+- name: pcf-platform
+  type: cf
+  source:
+    api: {{cf-api}}
+    username: {{cf-username}}
+    password: {{cf-password}}
+    organization: {{cf-organization}}
+    space: {{cf-space}}
+    skip_cert_check: true
+
+jobs:
+- name: unit-test
+  serial: true
+  plan:
+  - get: demo-app-source-code
+    trigger: true
+  - task: unit-test
+    file: demo-app-source-code/ci/tasks/test.yml
+
+- name: job-deploy-app
+  serial: true
+  plan:
+  - get: demo-app-source-code
+    trigger: true
+    passed:
+    - unit-test
+  - task: package
+    file: demo-app-source-code/ci/tasks/package.yml
+  - put: pcf-platform
+    params:
+      path: artifacts/springJPA-postgreSQL-0.0.1-SNAPSHOT.jar
+      manifest: demo-app-source-code/manifest.yml

@@ -12,8 +12,7 @@ outputs:
   - name: artifacts
 
 run:
-  path: "demo-app-source-code/mvnw"
-  args: ["-f", "demo-app-source-code/pom.xml", "package", "-DskipTests"]
+  path: "demo-app-source-code/ci/tasks/package.sh"
 
 params:
   MAVEN_BASEDIR: demo-app-source-code

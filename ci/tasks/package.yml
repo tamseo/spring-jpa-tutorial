@@ -3,15 +3,17 @@ platform: linux
 image_resource:
   type: docker-image
   source:
-    repository: sonarqube
-    tag: latest
+    repository: java
+    tag: 8-jdk
 
 inputs:
   - name: demo-app-source-code
+outputs:
+- name: artifact
 
 run:
   path: "demo-app-source-code/mvnw"
-  args: ["-f", "demo-app-source-code/pom.xml", "package"]
+  args: ["-f", "demo-app-source-code/pom.xml", "test"]
 
 params:
   MAVEN_BASEDIR: demo-app-source-code

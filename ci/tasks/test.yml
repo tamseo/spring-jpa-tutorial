@@ -8,12 +8,10 @@ image_resource:
 
 inputs:
   - name: demo-app-source-code
-outputs:
-  - name: artifacts
 
 run:
   path: "demo-app-source-code/mvnw"
-  args: ["-f", "demo-app-source-code/pom.xml", "package", "-DskipTests"]
+  args: ["-f", "demo-app-source-code/pom.xml", "test"]
 
 params:
   MAVEN_BASEDIR: demo-app-source-code

@@ -1,0 +1,17 @@
+platform: linux
+
+image_resource:
+  type: docker-image
+  source:
+    repository: sonarqube
+    tag: latest
+
+inputs:
+  - name: demo-app-source-code
+
+run:
+  path: "demo-app-source-code/mvnw"
+  args: ["-f", "demo-app-source-code/pom.xml", "package", "sonar:sonar"]
+
+params:
+MAVEN_BASEDIR: demo-app-source-code

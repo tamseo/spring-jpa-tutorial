@@ -4,7 +4,7 @@ resources:
   type: git
   source:
     uri: https://github.com/tamseo/spring-jpa-tutorial
-    branch: master
+    branch: dev
 
 - name: pcf-platform
   type: cf

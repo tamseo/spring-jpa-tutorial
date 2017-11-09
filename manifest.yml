@@ -1,5 +1,6 @@
 applications:
-- memory: 512M
+- name: simple-db-test
+  memory: 512M
   instances: 1
   buildpack: java_buildpack_offline
   stack: cflinuxfs2
